@@ -4,6 +4,6 @@ from django.urls import include
 from . import views
 
 urlpatterns = [
-    path("", views.homepage),
+    path("", views.homepage, name="home"),
     path("storebook/", views.store_books, name="store_book"),
 ]
