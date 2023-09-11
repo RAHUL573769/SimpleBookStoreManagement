@@ -3,4 +3,7 @@ from django.urls import path
 from django.urls import include
 from . import views
 
-urlpatterns = [path("", views.homepage)]
+urlpatterns = [
+    path("", views.homepage),
+    path("storebook/", views.store_books, name="store_book"),
+]
