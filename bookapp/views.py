@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from bookapp.forms import BookForm
+from django.shortcuts import redirect
+from bookapp.models import BookStoreModel
 
 
 # Create your views here.
@@ -8,5 +10,22 @@ def homepage(request):
 
 
 def store_books(request):
-    book = BookForm
+    print("Hello")
+    if request.method == "POST":
+        print("Hello1")
+        book = BookForm(request.POST)
+        if book.is_valid():
+            print("Hello 3")
+            book.save(commit=True)
+            print(book.cleaned_data)
+            return redirect("show_book")
+    else:
+        book = BookForm()
+        print(book)
     return render(request, "store_book.html", {"form": book})
+
+
+def show_books(request):
+    book = BookStoreModel.objects.all()
+    print(book)
+    return render(request, "show_book.html", {"data": book})
