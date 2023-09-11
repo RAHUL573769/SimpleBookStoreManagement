@@ -28,4 +28,6 @@ def store_books(request):
 def show_books(request):
     book = BookStoreModel.objects.all()
     print(book)
+    for item in book:
+        print(item.first_pub)
     return render(request, "show_book.html", {"data": book})
