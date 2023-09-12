@@ -31,3 +31,9 @@ def show_books(request):
     for item in book:
         print(item.first_pub)
     return render(request, "show_book.html", {"data": book})
+
+
+def edit_book(request, id):
+    book = BookStoreModel.objects.get(pk=id)
+    form = BookForm(instance=book)
+    return render(request, "store_book.html", {"form": form})
