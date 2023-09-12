@@ -36,4 +36,9 @@ def show_books(request):
 def edit_book(request, id):
     book = BookStoreModel.objects.get(pk=id)
     form = BookForm(instance=book)
+    if request.method == "POST":
+        info = BookForm(request.POST, instance=book)
+        if info.is_valid():
+            book.save()
+            return redirect("show_book")
     return render(request, "store_book.html", {"form": form})
