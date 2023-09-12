@@ -42,3 +42,8 @@ def edit_book(request, id):
             book.save()
             return redirect("show_book")
     return render(request, "store_book.html", {"form": form})
+
+
+def delete_book(request, id):
+    book = BookStoreModel.objects.get(pk=id).delete()
+    return redirect("show_book")

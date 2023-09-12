@@ -3,6 +3,8 @@
 <h1>This is Show Book</h1>
 <div style="width: 80%; margin: auto">
   <h1>Here is The List of Books</h1>
+
+  {% if data %}
   <table class="table">
     <thead>
       <tr>
@@ -29,12 +31,19 @@
             >Edit</a
           >
         </td>
+
         <td>
-          <button class="btn btn-primary">Delete</button>
+          <a href="{%url 'deletebook' id=item.id %}" class="btn btn-primary"
+            >Delete Book</a
+          >
         </td>
       </tr>
       {% endfor %}
     </tbody>
   </table>
+
+  {% else %}
+  <h1>No Data Available</h1>
+  {% endif %}
 </div>
 {% endblock content %}

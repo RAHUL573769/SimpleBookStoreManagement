@@ -49,7 +49,21 @@
       </div>
     </nav>
 
-    {% block content %} {% endblock content %}
+    {% block content %}
+    <h1>
+      Welcome To Book Store Management System
+
+      <h3>
+        Click
+        <a href="{% url 'store_book'%}"> Store Book </a>to store book
+      </h3>
+
+      <h3>
+        Click
+        <a href="{%url 'show_book'%}"> Show Book </a> to Show Stored Books
+      </h3>
+    </h1>
+    {% endblock content %}
 
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
